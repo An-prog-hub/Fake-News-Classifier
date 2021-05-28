@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Fake News Classifier</title>
+
+	<style>
+		input{
+			font-size: 50px;
+			padding: 10px;
+		}
+		button{
+			font-size: 50px;
+			padding: 10px
+		}
+		h1{
+			font-size: 50px;
+		}
+	</style>
+
+</head>
+<body>
+	<form action="/" method="POST">
+		<input name="news_input" type="text" autocomplete="off" placeholder="News">
+		<button type="submit">Classify</button>
+		<div class="output">
+			<h1>{{classified}}</h1>
+		</div>
+	</form>
+</body>
+</html>
