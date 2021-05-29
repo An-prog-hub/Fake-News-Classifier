@@ -1,32 +1,89 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Fake News Classifier</title>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Fake News📰 Detection System</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Pacifico"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Arimo"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Hind:300"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="../static/style.css" />
+  </head>
 
-	<style>
-		input{
-			font-size: 50px;
-			padding: 10px;
-		}
-		button{
-			font-size: 50px;
-			padding: 10px
-		}
-		h1{
-			font-size: 50px;
-		}
-	</style>
+  <body>
+    <!-- Added Splash Screen Animation -->
+    <div class="splash">
+      <h1 class="fade-in">
+        Tracking Any News by using News Detection App
+        <img
+          src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/160/emoji-one/104/newspaper_1f4f0.png"
+          alt="News Emoji"
+          width="50px"
+          height="50px"
+        />
+      </h1>
+    </div>
 
-</head>
-<body>
-	<form action="/" method="POST">
-		<input name="news_input" type="text" autocomplete="off" placeholder="News">
-		<button type="submit">Classify</button>
-		<div class="output">
-			<h1>{{classified}}</h1>
-		</div>
-	</form>
-</body>
+    <div class="login">
+      <h1>Fake News 📰 Detector</h1>
+
+      <form action="{{ url_for('predict')}}" method="POST">
+        <textarea
+          rows="8"
+          cols="60"
+          onkeypress="auto_grow(this);"
+          onkeyup="auto_grow(this)"
+          required="required"
+          style="font-size: 18px"
+        ></textarea>
+        <br />
+
+        <!-- Button  -->
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">
+          Predict
+        </button>
+
+        <div class="results">
+          <div>
+            <div class="output">
+              <h1>{{classified}}</h1>
+            </div>
+          </div>
+        </div>
+      </form>
+
+      <script>
+        // Splash
+        const splash = document.querySelector(".splash");
+        document.addEventListener("DOMContentLoaded", (e) => {
+          setTimeout(() => {
+            splash.classList.add("display-none");
+          }, 2000);
+        });
+
+        // TextBox Space
+        function auto_grow(element) {
+          element.style.height = "5px";
+          element.style.height = element.scrollHeight + "px";
+        }
+      </script>
+    </div>
+  </body>
 </html>
